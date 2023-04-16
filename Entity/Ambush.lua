@@ -1,3 +1,19 @@
+function GetGitSoundID(GithubSnd,SoundName)
+    SoundName = tostring(SoundName)
+    local url = GithubSnd
+    local FileName = SoundName
+    local folderName = "ChronoScripts"
+    local path = folderName.."/Audio"..FileName..".mp3"
+    
+    if not isfolder(folderName) then
+        makefolder(folderName)
+    end
+    
+    writefile(path, game:HttpGet(url))
+    
+    return (getcustomasset or getsynasset)(path)
+end
+
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
 
 local waiting = math.random(1,5)
