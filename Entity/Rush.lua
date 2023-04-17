@@ -49,7 +49,11 @@ local Rush = Spawner.createEntity({
                 },
             },
         },
-        CustomDialog = {"You died to Rush...", "Pay attention to any cues that may hint at its arrival."},
+        --CustomDialog = {"You died to Rush...", "Pay attention to any cues that may hint at its arrival."},
     })
 
-    Spawner.runEntity(Rush)
+Rush.Debug.OnDeath = function()
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You died to Rush...", "Pay attention to any cues that may hint at its arrival."}, "Blue")
+end
+
+Spawner.runEntity(Rush)
