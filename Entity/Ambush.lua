@@ -82,4 +82,8 @@ local waiting = math.random(1,5)
         CustomDialog = {"You died to who you call Ambush...", "It is a tricky one.", "Use what you have learned from Rush!"},
     })
 
-    Spawner.runEntity(Ambush)
+Ambush.Debug.OnDeath = function()
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You died to who you call Ambush...", "It is a tricky one.", "Use what you have learned from Rush!"}, "Blue")
+end
+
+Spawner.runEntity(Ambush)
